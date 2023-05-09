@@ -24,8 +24,13 @@ public class SalariedEmployee extends Employee {
     }
 
     //BUSINESS/ACTION METHODS:
+    @Override
     public void pay() {
-        System.out.println(getName() + " is paid salary " + getSalary());  //inherited getName from 'employee'
+        System.out.println(getName() + " is paid salary: " + getSalary());  //inherited getName from 'employee'
+    }
+
+    public void takeVacation() {
+        System.out.println(getName() + " is on vacation.");
     }
 
     //ACCESSOR METHODS:

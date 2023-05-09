@@ -21,9 +21,9 @@ public class HourlyEmployee extends Employee {
         setHours(hours);         //delegate to setters for any validation/conversion
     }
     // BUSINESS/ACTION METHODS:
+    @Override
     public void pay() {
-        System.out.println(getName() + "is paid hourly at rate: " + getRate());
-        System.out.println("Payment=" + getRate()*getHours());
+        System.out.println(getName() + "is paid hourly at rate=" + getRate() + ", Payment=" + getRate()*getHours());
     }
 
 

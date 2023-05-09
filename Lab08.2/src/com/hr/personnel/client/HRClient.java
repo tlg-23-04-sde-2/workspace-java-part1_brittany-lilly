@@ -8,12 +8,9 @@
 
 package com.hr.personnel.client;
 
-import com.hr.personnel.Department;
-import com.hr.personnel.Employee;
-import java.time.LocalDate;
+import com.hr.personnel.*;
 
-import com.hr.personnel.HourlyEmployee;
-import com.hr.personnel.SalariedEmployee;
+import java.time.LocalDate;
 
 import javax.sound.midi.Soundbank;
 
@@ -28,10 +25,11 @@ class HRClient {
         System.out.println(dept);
 
         // add Employees to it
-        dept.addEmployee(new Employee("Jason", LocalDate.of(1990, 8, 24)));
-        dept.addEmployee(new Employee("Julie", LocalDate.of(2000, 2, 2)));
+        dept.addEmployee(new SalariedEmployee("Jason", LocalDate.of(1990, 8, 24), 1750.0));
+        dept.addEmployee(new HourlyEmployee("Julie", LocalDate.of(2000, 2, 2), 45.0, 20.0));
         dept.addEmployee(new SalariedEmployee("Logan", LocalDate.of(2012, 12, 12), 1250.0));
         dept.addEmployee(new HourlyEmployee("Amelia", LocalDate.of(2009,9,9), 25.0, 20.0));
+        dept.addEmployee(new Executive("Jay", LocalDate.of(2022, 2, 2), 250_000.00));
 
         // list its Employees
         System.out.println("\nList employees:");
@@ -44,5 +42,9 @@ class HRClient {
         // Pay all Employees
         System.out.println("\nPay all employees");
         dept.payEmployees();
+
+        //forced holiday break
+        System.out.println("\nForced holiday break");
+        dept.holidayBreak();
     }
 }

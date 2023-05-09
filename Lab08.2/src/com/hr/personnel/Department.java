@@ -23,13 +23,13 @@ package com.hr.personnel;
  *   String toString()     self-explanatory.
  */
 public class Department {
-    // fields
+    //INSTANCE VARIABLES/FIELDS:
     private String name;
     private String location;
-    private Employee[] employees = new Employee[100];    //this is a has-a, collection in english/array
+    private final Employee[] employees = new Employee[100];    //this is a has-a, collection in english/array
     private int currentIndex = 0;  // for dealing with the array
 
-    // constructors
+    //CONSTRUCTORS:
     public Department() {
     }
 
@@ -38,7 +38,7 @@ public class Department {
         setLocation(location);
     }
 
-    // business methods
+    //BUSINESS/ACTION METHODS:
     public void listEmployees() {
         // Note: we don't use for-each here because we only want to access the array where employees were added.
         // Question: what is in the array for indices where no Employee was added?  null!
@@ -58,13 +58,23 @@ public class Department {
             employees[i].pay();
         }
     }
+    //"forced holiday break" f/hrly, 'takeVacation' f/salaried
+    public void holidayBreak() {
+        for (int i = 0; i < currentIndex; i++) {
+            // if employees @ i = salaried, downcast emp ref to salaried emp --MUST verify type b4 downcast
+            if (employees[i] instanceof SalariedEmployee) {  //getclass would also work
+                SalariedEmployee semp = (SalariedEmployee) employees[i]; //this is downcasting
+                semp.takeVacation();
+            }
+        }
+    }
 
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {  //emp is a REFERENCE to an object--why we can addEmployee for salary& Hrly
         employees[currentIndex++] = emp;
     }
 
-    // accessor methods
+    //ACCESS METHODS:
     public String getName() {
         return name;
     }
@@ -81,6 +91,7 @@ public class Department {
         this.location = location;
     }
 
+    //ToSTRING:
     //I don't have to say @Overriding bc the one in 'object' (HR Client/"Seattle") itself is inherently called
     @Override
     public String toString() {

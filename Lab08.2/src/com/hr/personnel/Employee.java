@@ -21,12 +21,13 @@ import java.time.LocalDate;
  *   void work()        simulates work by printing a message to show it was called.
  *   String toString()  self-explanatory.
  */
-public class Employee {
-    // fields
+//public abstract class Employee {   //Jay made this work & is in lab TODO. What am i missing? another abstract@Pay
+    public class Employee {
+//INSTANCE VARIABLES/FIELDS:
     private String name;
     private LocalDate hireDate;
 
-    // constructors
+    //CONSTRUCTORS:
     public Employee() {
     }
 
@@ -35,17 +36,17 @@ public class Employee {
         setHireDate(hireDate);
     }
 
-    // business methods
+    //BUSINESS/ACTION METHODS:
     public void work() {
         System.out.println(getName() + " working hard since " + getHireDate());
     }
-
-    //TODO: fixing this Tues 09May23
+    //We declare all employees get paid, but can't implement it here. Subclasses have the information.
+//    public abstract void pay() {  //Jay made this work. I am supposed to have abstract TODO: figure it out
+//    }
     public void pay() {
-        System.out.println(getName() + " is paid ... somehow...");
     }
 
-    // accessor methods
+    //ACCESS METHODS:
     public String getName() {
         return name;
     }
@@ -62,6 +63,7 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
+    //ToSTRING:
     @Override
     public String toString() {
 //        return "Employee: name=" + getName() + ", hireDate=" + getHireDate();
